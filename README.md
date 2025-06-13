@@ -6,10 +6,6 @@ In this repository we include all of the code used for generating the figures an
 - `algorithms.py` implements all of the algorithms
 - `helper.py` provides utility functions for calculating $\underline{X}$, $\Delta(X)$, etc
 
-## Figure Files
-- `delta_qcrit_figure.py` creates the figure outputting $q^{\Delta}$ and $\Delta$ versus the $\lambda$ value
-- `minimaxrisk_figure.py` creates the figure comparing $\textsf{Regret}(q)$ versus the order level $q$
-
 ## Running a Simulation
 - `run_uniform.py` runs the simulations under the non-iid perishing distribution with different allocation schedules
 - `run_geometric.py` runs the simulations under (synthetic) Geometric perishing
