@@ -1,6 +1,6 @@
 # Online Fair Allocation of Perishable Resources
 
-In this repository we include all of the code used for generating the figures and numerical simulations.
+In this repository we include all of the code used for generating the figures and numerical simulations for the paper [Online Fair Allocation of Perishable Resources](https://arxiv.org/abs/2406.02402).
 
 ## Supplementary Files
 - `algorithms.py` implements all of the algorithms
