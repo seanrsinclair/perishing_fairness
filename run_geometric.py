@@ -28,14 +28,7 @@ var_size = .1
 
 algo_list = ['static_x_lower', 'static_b_over_n', 'hope_guardrail_35', 'og_hope_guardrail_35']
 
-# alpha_grid = [0.11, 0.21, 0.31, 0.41, 0.51, 0.61, 0.71, 0.81, 0.91]
-
-# alpha_grid = [0.1, 0.3, 0.5, 0.7, 0.9]
-# alpha_grid = [0.125, 0.15, 0.175, 0.2, 0.215, 0.25, 0.275]
-# alpha_grid = [0.1, 0.3]
-alpha_grid = [0.5, 0.7, 0.9]
-
-# TODO: Run this overnight to get experimental results
+alpha_grid = [0.1, 0.3, 0.5, 0.7, 0.9]
 
 for alpha in alpha_grid:
     file_name = "geometric_perishing_2_"+str(alpha).replace('.','-')
@@ -49,8 +42,6 @@ for alpha in alpha_grid:
         size = np.maximum(0, np.random.normal(loc=mean_size, scale=np.sqrt(var_size), size=n))
         return size
 
-    # num_groups = np.logspace(2, 12, base=1.5, num=10).astype(int)
-    # num_groups = np.linspace(2, 300, num=8).astype(int)
     num_groups = np.logspace(2, 12, base=1.5, num=20).astype(int)
     data = []
 
@@ -94,9 +85,6 @@ for alpha in alpha_grid:
 
 
             xopt = max_budget / np.sum(demands)
-
-            # print(f"Minimum L_T to get non trivial bound: {xopt - x_lower_perish} versus: {mean_size * (n**(-1/3))}")
-            # Should also check feasibility of x_lower on this sample path that was sampled?
             
             for algo in algo_list:
                 # print(algo)

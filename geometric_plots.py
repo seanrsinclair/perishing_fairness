@@ -26,18 +26,10 @@ INCLUDE_PUA = True
 mean_size = 2
 var_size = .1
 
-# algo_list = ['hope_guardrail_14', 'hope_guardrail_12', 'hope_guardrail_13']
 algo_list = ['static_x_lower', 'static_b_over_n', 'hope_guardrail_35', 'og_hope_guardrail_35']
 
-# alpha_grid = [0.125, 0.15, 0.175, 0.2, 0.215, 0.25, 0.275]
-# alpha_grid = [0.1, 0.2, 0.25, 0.3, 0.5, 0.7, 0.9]
 alpha_grid = [0.3, 0.5, 0.7, 0.9]
-# alpha_grid = [0.1, 0.2, 0.25, 0.3, 0.5, 0.7, 0.9]
-# alpha_grid = []
-# alpha_grid = [.07, .075, .08, .085, .09, .095]
-# alpha_grid = [0.051, 0.06, 0.065, 0.31]
 
-# alpha_grid = [0.1, 0.3, 0.5, 0.7, 0.9]
 
 for alpha in alpha_grid:
     file_name = "geometric_perishing_2_"+str(alpha).replace('.','-')
@@ -88,7 +80,6 @@ for alpha in alpha_grid:
     # modified_algo_list = algo_list
     print(modified_algo_list)
 
-    # if INCLUDE_PUA:
     df = df[df['Algorithm'].isin(modified_algo_list)]
 
 
@@ -151,12 +142,8 @@ for alpha in alpha_grid:
 
 
     print(df_group)
-    # print(print(df_group.to_latex(index=False,
-    #               formatters={"name": str.upper},
-    #               float_format="{:.1f}".format,
-    #     )) )
 
-    
+    # The following code is used to export the legends for the paper:    
 
     # legend = axs[2].legend(ncol = 5, loc= 'lower center', bbox_to_anchor=(-1, -.3, 0.5, 0.5))
     # print(len(legend.get_lines()))

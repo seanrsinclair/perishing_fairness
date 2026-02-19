@@ -36,28 +36,12 @@ EPS = 1
 
 
 
-# PAPER DISTRIBUTIONS: ['B', 'c']
 # A = Instance 1
 # B = Instance 2
-# problem_list = ['A', 'B', 'C']
-# problem_list = ['A']
-# problem_list = ['A','B']
-# problem_list = ['A', 'B']
-problem_list = ['B']
-# problem_list = ['C']
-# order_list = ['mean', 'cv', 'random', 'reverse']
-# order_list = ['mean', 'cv', 'lcb']
-order_list = ['lcb', 'mean', 'cv']
-# order_list = ['mean']
-# order_list = ['opt']
-# order_list = ['mean', 'cv', 'lcb', 'opt']
-# order_list = ['lcb']
-# order_list = ['opt']
-# order_list = ['lcb']
-# num_groups = [50]
 
-# num_groups = np.logspace(4, 11, base=1.5, num=10).astype(int)
-# num_groups = [50]
+problem_list = ['B']
+order_list = ['lcb', 'mean', 'cv']
+
 num_groups = [50]
 
 

@@ -24,9 +24,6 @@ INCLUDE_PUA = True
 mean_size = 2
 var_size = .1
 
-# algo_list = ['static_x_lower']
-# order_list = ['mean', 'cv', 'random', 'reverse']
-
 algo_list = ['hope_guardrail_35']
 # algo_list = ['static_x_lower']
 order_list = ['mean', 'cv', 'lcb', 'ucb']
@@ -35,11 +32,6 @@ order_list = ['mean', 'cv', 'lcb', 'ucb']
 problem_list = ['A', 'B']
 
 
-
-
-# algo_list = ['static_x_lower', 'static_b_over_n']
-# order_list = ['mean', 'cv', 'random', 'reverse']
-# order_list = ['mean', 'reverse']
 
 
 for algo in algo_list:
@@ -51,8 +43,6 @@ for algo in algo_list:
         df = pd.read_csv('./data/'+file_name+'.csv')
 
 
-        # NEED TO FILTER THE ALGORITHMS PROPERLY IN THE DIFFERENT SETTINGS FOR THE TWO CASES
-        # ALSO PRINT OUT THE INFORMATION FOR THE STOCKOUT PROBABILITIES PLOTS
 
         df = df[df['Algorithm'].str.startswith(algo)]
         print(df['Algorithm'].unique())
@@ -96,14 +86,6 @@ for algo in algo_list:
 
 
 
-        # modified_algo_list = algo_list
-
-        # modified_algo_list = algo_list
-        # print(modified_algo_list)
-
-        # if INCLUDE_PUA:
-        # df = df[df['Algorithm'].isin(modified_algo_list)]
-
 
         fg, axs = plt.subplots(1,4, sharex='all', figsize=(20,6))
 
@@ -143,18 +125,6 @@ for algo in algo_list:
 
         fg.savefig('./figures/'+file_name+"_"+algo+'.pdf', bbox_inches = 'tight',pad_inches = 0.01, dpi=900)
 
-        # df_group = df[df.NumGroups >= (1/4) * max(df.NumGroups)]
-
-    #     max_n = df['NumGroups'].max()
-
-    # # Filter the DataFrame to include only rows where 'Score' is the maximum
-    #     df_group = df.loc[df['NumGroups'] == max_n]
-
-    #     df_group = df_group[df_group.Norm == 'Stockout']
-    #     df_group = df_group.groupby(['Algorithm'], as_index=False).agg(
-    #                     {'Value':['mean','std']})
-
-    #     print(df_group)
         
 
     legend = axs[2].legend(ncol = 4, loc= 'lower center', bbox_to_anchor=(-1, -.3, 0.5, 0.5))

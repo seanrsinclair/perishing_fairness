@@ -24,18 +24,6 @@ import algorithms
 INCLUDE_PUA = True
 
 
-# algo_list = ['hope_guardrail_14', 'hope_guardrail_12', 'hope_guardrail_13']
-# algo_list = ['static_x_lower', 'static_b_over_n', 'hope_guardrail_12', 'og_hope_guardrail_12']
-# algo_list = ['hope_guardrail_35']
-
-
-# alpha_grid = [.07, .075, .08, .085, .09, .095]
-# alpha_grid = [0.051, 0.06, 0.065, 0.31]
-
-# alpha_grid = [0.1, 0.3, 0.5, 0.7, 0.9]
-
-
-# problem_list = ['A','B', 'C', 'D']
 problem_list = ['A', 'B']
 
 for setup in problem_list:
@@ -50,13 +38,7 @@ for setup in problem_list:
     grouped_df = df.groupby(['Order', 'Norm']).agg({'Value': ['mean', 'sem']}).reset_index()
     grouped_df[('Value', 'sem')] *= 1.96
 
-    # grouped_df.loc[:, ('Value', 'sem')] = grouped_df.loc[:, ('Value', 'sem')] * 1.96
 
-
-    # df_group.loc[df['Value'].index.get_level_values(1) == 'sem', ('Value', 'sem')] *= 1.96
-
-
-    # print(grouped_df)
     tmp = pd.pivot_table(grouped_df, index='Order', columns = 'Norm')
 
     # print(tmp)

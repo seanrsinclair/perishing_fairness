@@ -29,11 +29,7 @@ algo_list = ['static_x_lower', 'static_b_over_n', 'hope_guardrail', 'og_hope_gua
 
 L_grid = np.arange(0,1,0.05)
 
-# alpha_grid = [0.1, 0.3, 0.5, 0.7, 0.9]
-alpha_grid = [0.2, 0.25]
-# alpha_grid = [0.9]
-
-# TODO: Run this overnight to get experimental results
+alpha_grid = [0.1, 0.3, 0.5, 0.7, 0.9]
 
 for alpha in alpha_grid:
 
@@ -68,8 +64,6 @@ for alpha in alpha_grid:
 
     dperish = (max_budget / n_upper[0]) - x_lower_perish
     
-    # print(f'Necessary X_lower due to perishing: {x_lower_perish} and dperish: {dperish}')
-
 
     while num_valid < num_iterations:
         demands = demand_dist(n, mean_size, var_size)
@@ -87,9 +81,6 @@ for alpha in alpha_grid:
 
 
         xopt = max_budget / np.sum(demands)
-
-        # print(f"Minimum L_T to get non trivial bound: {xopt - x_lower_perish} versus: {mean_size * (n**(-1/3))}")
-        # Should also check feasibility of x_lower on this sample path that was sampled?
         
         for algo in algo_list:
             # print(algo)

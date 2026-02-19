@@ -26,14 +26,10 @@ num_iterations = 100
 FILTER_OE = False
 
 
-# algo_list = ['static_x_lower', 'static_b_over_n', 'hope_guardrail_12', 'og_hope_guardrail_12']
-# algo_list = ['static_x_lower', 'static_b_over_n', 'hope_guardrail_35', 'og_hope_guardrail_35']
+algo_list = ['static_x_lower', 'static_b_over_n', 'hope_guardrail_35', 'og_hope_guardrail_35']
 
-algo_list = ['static_b_over_n']
 
-# algo_list = ['static_x_lower']
-
-file_name = "geometric_perishing_2_real_data_"
+file_name = "geometric_perishing_real_data_"
 print(f'Running for: {file_name}')
 
 GINGER = True
@@ -57,18 +53,14 @@ def demand_dist(n, mean_size, var_size=.1):
     size = np.maximum(0, np.random.normal(loc=mean_size, scale=np.sqrt(var_size), size=n))
     return size
 
-# num_groups = np.logspace(2, 11, base=1.5, num=10).astype(int)
 num_groups = [365]
-# num_groups = np.logspace(2, 12, base=1.5, num=20).astype(int)
 data = []
 
 n = 365
 max_budget = int(n * mean_size)
-# max_budget = 12685
 
 order = np.arange(0,max_budget,1)
 
-# print(f'Num Locations: {n}, Max Budget: {max_budget}')
 offset_prob = helper.check_offset_expiry(perish_dist, lambda n: demand_dist(n, mean_size, var_size), n, max_budget)
 print(f' Probability process is offset expiring: {100*offset_prob}')
 

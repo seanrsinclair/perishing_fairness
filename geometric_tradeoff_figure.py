@@ -36,17 +36,12 @@ algo_list = ['static_x_lower', 'static_b_over_n', 'hope_guardrail', 'og_hope_gua
 
 
 plt.style.use('PaperDoubleFig.mplstyle.txt')
-# plt.rc('text.latex', preamble=r'\usepackage{amsfonts}')
 plt.rc('text.latex', preamble=r'\usepackage{amsfonts}\usepackage{mathptmx}')
 plt.rc('text', usetex=True)
 
 
 
-# alpha_grid = [0.1, 0.3, 0.5, 0.7, 0.9, 0.2, 0.25]
 alpha_grid = [0.1]
-# alpha_grid = [0.1, 0.2, 0.25, 0.3, 0.5, 0.7, 0.9]
-# alpha_grid = [0.2, 0.25]
-# alpha_grid = [0.1]
 l_val = 0.35
 
 for alpha in alpha_grid:
@@ -95,9 +90,6 @@ for alpha in alpha_grid:
 
     fg, axs = plt.subplots(1, 1, figsize=(10, 6))
 
-    # sns.scatterplot(x='Counterfactual_Envy', y='Waste', data=tmp_og, hue='Envy Param', palette = 'summer', ax = axs, legend=False)
-    # sns.scatterplot(x='Counterfactual_Envy', y='Waste', data=tmp_hope, hue='Envy Param', palette = 'cool', ax = axs, legend=False)
-    # sns.lineplot(x='Counterfactual_Envy', y='Waste', data=tmp_og, estimator=max, color='green', linestyle='dashed', ci=None, alpha='Envy Param', label=r'Vanilla-Guardrail')
     sns.lineplot(x='Counterfactual_Envy', y='Waste', data=tmp_og, estimator=max, color='green', linestyle='dashed', ci=None, label=r'\textsc{Vanilla-Guardrail}')
     sns.lineplot(x='Counterfactual_Envy', y='Waste', data=tmp_hope, estimator=max, color = 'blue', linestyle = 'dotted', ci=None, label=r'\textsc{Perish-Guardrail}')
     sns.scatterplot(x='Counterfactual_Envy', y='Waste', data=tmp_static_bn, color='g', ax = axs, s=100, label=r'\textsc{Static} $B/\overline{N}$')
@@ -108,8 +100,6 @@ for alpha in alpha_grid:
     plt.ylim(0, 105)
     plt.xlim(0, 1.8)
 
-    # plt.ylabel(r'$\mathbb{E}[\Delta_{\textit{efficiency}}]$')
-    # plt.xlabel(r'$\mathbb{E}[\Delta_{\textit{EF}}]$')
     plt.xlabel(r'$\Delta_{\textit{EF}}$')
     plt.ylabel(r'$\Delta_{\textit{efficiency}}$')
     # plt.show()
@@ -127,24 +117,3 @@ for alpha in alpha_grid:
     [legend.get_lines()[i].set_linewidth(3) for i in range(len(legend.get_lines()))]
 
     helper.export_legend(legend, filename="figures/tradeoff_legend.pdf")
-
-        # df_static_lower = df_static_lower.groupby(['Metric'], as_index=False).agg(
-        #                 {'Value':['mean','std']})
-        
-        # tmp = tmp.groupby(['Algorithm', 'Norm']).mean()
-        # vals = pd.pivot_table(tmp, index='Algorithm', values='Value', columns='Norm')
-        # vals['Algorithm'] = vals.index
-
-
-        # # df_group = df[df.NumGroups >= (1/4) * max(df.NumGroups)]
-        # df_group =
-        # df_group = df_group[df_group.Norm == 'Stockout']
-        # df_group = df_group.groupby(['Algorithm'], as_index=False).agg(
-        #                 {'Value':['mean','std']})
-
-        # print(df_group)
-        # # print(print(df_group.to_latex(index=False,
-        # #               formatters={"name": str.upper},
-        # #               float_format="{:.1f}".format,
-        # #     )) )
-

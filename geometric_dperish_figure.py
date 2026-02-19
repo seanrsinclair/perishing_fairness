@@ -64,36 +64,36 @@ def demand_dist(n, mean_size, var_size=.1):
 
 
 
+# Runs the analysis to save all of the data
+data = []
+for alpha in alpha_grid:
+    print(f"Parameter alpha: {alpha}")
 
-# data = []
-# for alpha in alpha_grid:
-#     print(f"Parameter alpha: {alpha}")
-
-#     def perish_dist(b, n):
-#         val = np.minimum(n,np.random.geometric(p = (n)**((-1)*(1+alpha))))
-#         return val
+    def perish_dist(b, n):
+        val = np.minimum(n,np.random.geometric(p = (n)**((-1)*(1+alpha))))
+        return val
         
-#     n = num_groups    
+    n = num_groups    
 
-#     max_budget = mean_size*n
-#     order = np.arange(0,max_budget,1)
+    max_budget = mean_size*n
+    order = np.arange(0,max_budget,1)
 
-#     offset_prob = helper.check_offset_expiry(perish_dist, lambda n: demand_dist(n, mean_size, var_size), n, max_budget)
-#     # print(f' Probability process is offset expiring: {100*offset_prob}')
+    offset_prob = helper.check_offset_expiry(perish_dist, lambda n: demand_dist(n, mean_size, var_size), n, max_budget)
+    # print(f' Probability process is offset expiring: {100*offset_prob}')
 
-#     # CALCULATES
-#     n_upper = helper.n_upper(lambda n: demand_dist(n, mean_size, var_size), n)
+    # CALCULATES
+    n_upper = helper.n_upper(lambda n: demand_dist(n, mean_size, var_size), n)
     
-#     x_lower_perish = helper.x_lower_line_search(perish_dist, lambda n: demand_dist(n, mean_size, var_size), n, max_budget, n_upper)
-#     x_lower_no_perish = (max_budget / n_upper[0])
+    x_lower_perish = helper.x_lower_line_search(perish_dist, lambda n: demand_dist(n, mean_size, var_size), n, max_budget, n_upper)
+    x_lower_no_perish = (max_budget / n_upper[0])
 
-#     dperish = (max_budget / n_upper[0]) - x_lower_perish
+    dperish = (max_budget / n_upper[0]) - x_lower_perish
     
-#     # print(f'Necessary X_lower due to perishing: {x_lower_perish} and dperish: {dperish}')
-#     print(f"N: {n}, dPerish: {dperish}")
+    # print(f'Necessary X_lower due to perishing: {x_lower_perish} and dperish: {dperish}')
+    print(f"N: {n}, dPerish: {dperish}")
 
-#     data_dict = {'NumGroups': n, 'Alpha': alpha, 'Epsilon': EPS, 'Allocation': 'X Lower', 'Value': x_lower_perish}
-#     data.append(data_dict)
+    data_dict = {'NumGroups': n, 'Alpha': alpha, 'Epsilon': EPS, 'Allocation': 'X Lower', 'Value': x_lower_perish}
+    data.append(data_dict)
 
 
 n = num_groups
@@ -104,8 +104,8 @@ n_upper = helper.n_upper(lambda n: demand_dist(n, mean_size, var_size), n)
 x_lower_no_perish = (max_budget / n_upper[0])
 print(f'x_lower_no_perish: {x_lower_no_perish}')
 
-# df = pd.DataFrame.from_records(data)
-# df.to_csv('./data/'+file_name+'.csv', index=False)
+df = pd.DataFrame.from_records(data)
+df.to_csv('./data/'+file_name+'.csv', index=False)
 df = pd.read_csv('./data/'+file_name+'.csv')
 
 df = df[df['Alpha'] >= 0]

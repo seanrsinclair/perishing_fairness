@@ -224,13 +224,6 @@ def perish_future(t, current_index, resource_dict, x_lower, perish_dist, demand_
         key=lambda b: order[b]
     )
 
-    # available_resources = []
-    # for b in range(max_budget):
-    #     if (resource_dict[str(b)][1] >= t and resource_dict[str(b)][0] < 1):
-    #         available_resources.append(b)
-    # if DEBUG: print(f"Available Resources: {available_resources}")
-    # based on the current resources B_t^{alg} returns the index of resources that (i) have not perished and (ii) have not been allocated fully yet
-
 
     # Estimate expected demand size for future steps
     mean_demand = np.mean([np.mean(demand_dist(n)[t:]) for _ in range(num_iters)])
