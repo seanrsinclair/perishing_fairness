@@ -87,7 +87,7 @@ Key dependencies include:
 We provide an **`environment.yml`** file specifying all required packages and versions to fully reproduce the computational environment. This environment can be created using:
 ```bash
 conda env create -f environment.yml
-conda activate robust_inventory
+conda activate resource_allocation
 ```
 
 All random number generation uses fixed seeds where appropriate to ensure reproducibility. Some Monte Carlo benchmarks use large sample sizes (up to 1e7), which may require several minutes to run on a standard laptop.
