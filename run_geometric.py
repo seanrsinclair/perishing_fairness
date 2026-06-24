@@ -23,7 +23,7 @@ FILTER_OE = False
 num_iterations = 100
 
 mean_size = 2
-var_size = .1
+var_size = .25
 
 
 algo_list = ['static_x_lower', 'static_b_over_n', 'hope_guardrail_35', 'og_hope_guardrail_35']
