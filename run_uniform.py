@@ -23,7 +23,7 @@ from itertools import permutations
 num_iterations = 10
 
 mean_size = 2
-var_size = 0.1
+var_size = 0.25
 
 FILTER_OE = False
 DEBUG = False
